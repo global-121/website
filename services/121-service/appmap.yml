@@ -1,3 +1,5 @@
+# See: https://appmap.io/docs/reference/appmap-node.html#configuration
+
 name: 121-service
 appmap_dir: tmp/appmap
 packages:

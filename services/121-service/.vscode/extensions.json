@@ -12,6 +12,7 @@
     "sysoev.vscode-open-in-github",
     "davidanson.vscode-markdownlint",
     "bierner.markdown-mermaid",
-    "mechatroner.rainbow-csv"
+    "mechatroner.rainbow-csv",
+    "appland.appmap"
   ]
 }

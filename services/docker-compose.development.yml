@@ -1,16 +1,15 @@
-# The settings from this file will override the values from `docker-compose.yml`
-# When run via:
-#     docker compose -f docker-compose.yml -f docker-compose.development.yml
+# The settings from this file can be overriden from a local `docker-compose.override.yml`-file.
+# See: https://docs.docker.com/compose/multiple-compose-files/
 
-# For use on macOS:
-# See: https://www.docker.com/blog/user-guided-caching-in-docker-for-mac/
-# To speed up the start-up process, use: ':cached' flag on volume definitions
-
-# For debugging:
-#
-# Make the service boot and wait:
-#     command: "tail -f /dev/null"
-#
+# You only need to set the values you want to override.
+# For example:
+# -------------------------------------------
+# services:
+#   121-service:
+#     command: 'npm run start:app-map'
+# -------------------------------------------
+# Save the above snippet as `docker-compose.override.yml` in the same directory as this file.
+# And run the `npm run start:services:override`-command.
 
 services:
   121-service:
@@ -18,11 +17,27 @@ services:
       target: development
     ports:
       - '${PORT_121_SERVICE}:${PORT_121_SERVICE}'
-      - '9229:9229'
+      - '9229:9229' # Node.js remote-debugging
     volumes:
       - '121_service_node_modules:/home/node/app/node_modules'
       - './121-service:/home/node/app'
-    command: "npm run start:dev"
+    # For debugging:
+    #
+    # Start with an interactive shell:
+    # command: "sh"
+    #
+    # Install new (dev-)dependencies:
+    # command: 'npm install --no-fund'
+    #
+    # Run in production-mode (also set `targert: production` in the build-section):
+    # command: 'npm start'
+    #
+    # Run in AppMap-mode (See README.md#):
+    # command: 'npm run start:app-map'
+    #
+    # Run in local-development watch-mode:
+    command: 'npm run start:dev'
+
   mock-service:
     build:
       target: development

@@ -1,3 +1,5 @@
 services:
   121-service:
-    command: "npx -y appmap-node npm run start:dev"
+    command: 'npm run start:appmap'
+    volumes:
+      - './121-service/tmp/appmap:/home/app/tmp/appmap'

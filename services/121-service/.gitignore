@@ -4,25 +4,23 @@ logs
 .DS_Store
 npm-debug.log*
 
+
 # Dependency directory
 node_modules
 .config/configstore
+
 
 # Generated assets / caches
 .npm
 dist
 coverage
 swagger-spec.json
-
-#IDEs
-.idea
-
-# certificates
-cert/DigiCertGlobalRootCA.crt.pem
-
-# Compodoc documentation
+# Compodoc documentation:
 documentation
-
 # AppMap
 tmp
 sql_warning.txt
+
+
+# certificates
+cert/DigiCertGlobalRootCA.crt.pem

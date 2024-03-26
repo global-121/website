@@ -1,3 +1,7 @@
+# Configuration of (sensitive) information in ENV-variables used by Docker Compose
 .env
 .env.*
 !.env.example
+
+# Local overrides for Docker Compose
+docker-compose.override.yml

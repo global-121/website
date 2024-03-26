@@ -138,25 +138,29 @@ Steps to rename a database table:
 
 #### Compodoc
 
-Compodoc can generate static code diagrams and documentation and serve that as a website locally:
+[Compodoc](https://compodoc.app/) can generate static code diagrams and documentation and serve that as a website locally:
 
-1. From the 121-service folder run this command: `npx @compodoc/compodoc -p tsconfig.json -s`
-2. This creates a folder called 'documentation' and starts a website that is typically available under: http://127.0.0.1:8080/
-3. Most useful is the per-module diagram and documentation available under: http://127.0.0.1:8080/modules.html
-4. For more information, see: https://docs.nestjs.com/recipes/documentation
+From this folder run: `npm run docs`.  
+This creates a `documentation`-folder and website on: <http://localhost:3080/>
+
+Most useful are the per-module diagrams and documentation: <http://localhost:3080/modules.html>
+
+You can also run `npm run docs -- --watch` to keep re-generating the documentation on file changes.
 
 #### AppMap
 
-AppMap is a very extensive static and dynamic code analysis tool which can be run as a Visual Studio Extension. It has many features, options, and comes with an AI chat bot to converse with:
+[AppMap](https://appmap.io/) is a very extensive static and dynamic code analysis tool which can be run as a Visual Studio Extension. It has many features, options, and comes with an AI chat bot to converse with:
 
-1. Install the AppMap Extension in Visual Studio Code. Reference: https://marketplace.visualstudio.com/items?itemName=appland.appmap
-2. Start the 121 Service node process under the appmap-node npx script by using: `npm run start:services:appmap` on your development environment.
-3. Create recordings by calling an API endpoint, or running test suites, or interacting via the 121 Portal. These recordings are stored in the tmp/appmap folder under the 121-service.
-4. Open the Appmaps from these recordings from the APPMAPS pane in the AppMap Extension in VS Code.
-5. Note: Docker creates new files as root. At least on Linux you need to run `sudo chown -R <your-username> .` in the 121-service folder so that the AppMap Extension can access the files of the recordings.
-6. AppMap creates Dependency Diagrams, Sequence Diagrams, Flame Graphs and more to get insight of the code's behavior.
-7. AppMap also as an AI bot called Navie AI to ask questions to.
-8. For more information: https://appmap.io/docs/appmap-overview.html or access the Slack channel: https://appmap.io/community
+1. Install the AppMap-extension in Visual Studio Code: <https://marketplace.visualstudio.com/items?itemName=appland.appmap>
+2. Start the 121 Service in AppMap-mode, from the repository-root, with: `npm run start:services:appmap`.
+3. Create recordings by calling an API endpoint, or running test suites, or interacting via the 121 Portal.  
+   These recordings are stored in the `tmp/appmap`-folder under the 121-service.
+4. Open the AppMaps from these recordings from the `APPMAPS` pane in the AppMap-extension in VS Code.
+
+   **Note:**  
+   Docker creates new files as `root`. At least on Linux you need to run `sudo chown -R <your-username> .` in the 121-service folder so that the AppMap Extension can access the files of the recordings.
+
+5. AppMap creates Dependency Diagrams, Sequence Diagrams, Flame Graphs and more to get insight of the code's behavior. 7. AppMap also as an AI bot called "Navie AI" to ask questions to. 8. For more information: <https://appmap.io/docs/appmap-overview.html> or access the Slack channel: <https://appmap.io/community>
 
 ---
 
