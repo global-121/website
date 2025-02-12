@@ -17,9 +17,9 @@ import { RedisModule } from '@121-service/src/payments/redis/redis.module';
 import { TransactionEntity } from '@121-service/src/payments/transactions/transaction.entity';
 import { TransactionsModule } from '@121-service/src/payments/transactions/transactions.module';
 import { ProgramFinancialServiceProviderConfigurationsModule } from '@121-service/src/program-financial-service-provider-configurations/program-financial-service-provider-configurations.module';
-import { ProgramEntity } from '@121-service/src/programs/program.entity';
-import { ProgramRegistrationAttributeEntity } from '@121-service/src/programs/program-registration-attribute.entity';
 import { ProgramModule } from '@121-service/src/programs/programs.module';
+import { ProjectEntity } from '@121-service/src/programs/project.entity';
+import { ProjectRegistrationAttributeEntity } from '@121-service/src/programs/project-registration-attribute.entity';
 import { RegistrationDataModule } from '@121-service/src/registration/modules/registration-data/registration-data.module';
 import { RegistrationUtilsModule } from '@121-service/src/registration/modules/registration-utilts/registration-utils.module';
 import { RegistrationEntity } from '@121-service/src/registration/registration.entity';
@@ -35,10 +35,10 @@ import { createScopedRepositoryProvider } from '@121-service/src/utils/scope/cre
 @Module({
   imports: [
     TypeOrmModule.forFeature([
-      ProgramEntity,
+      ProjectEntity,
       TransactionEntity,
       RegistrationEntity,
-      ProgramRegistrationAttributeEntity,
+      ProjectRegistrationAttributeEntity,
     ]),
     UserModule,
     HttpModule,

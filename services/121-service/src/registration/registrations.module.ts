@@ -19,9 +19,9 @@ import { IntersolveVisaModule } from '@121-service/src/payments/fsp-integration/
 import { IntersolveVoucherEntity } from '@121-service/src/payments/fsp-integration/intersolve-voucher/intersolve-voucher.entity';
 import { TransactionEntity } from '@121-service/src/payments/transactions/transaction.entity';
 import { ProgramFinancialServiceProviderConfigurationsModule } from '@121-service/src/program-financial-service-provider-configurations/program-financial-service-provider-configurations.module';
-import { ProgramEntity } from '@121-service/src/programs/program.entity';
-import { ProgramRegistrationAttributeEntity } from '@121-service/src/programs/program-registration-attribute.entity';
 import { ProgramModule } from '@121-service/src/programs/programs.module';
+import { ProjectEntity } from '@121-service/src/programs/project.entity';
+import { ProjectRegistrationAttributeEntity } from '@121-service/src/programs/project-registration-attribute.entity';
 import { QueuesRegistryModule } from '@121-service/src/queues-registry/queues-registry.module';
 import { RegistrationDataModule } from '@121-service/src/registration/modules/registration-data/registration-data.module';
 import { RegistrationUtilsModule } from '@121-service/src/registration/modules/registration-utilts/registration-utils.module';
@@ -48,13 +48,13 @@ import { createScopedRepositoryProvider } from '@121-service/src/utils/scope/cre
   imports: [
     TypeOrmModule.forFeature([
       UserEntity,
-      ProgramEntity,
+      ProjectEntity,
       TryWhatsappEntity,
       RegistrationEntity,
       LatestMessageEntity,
       WhatsappPendingMessageEntity,
       MessageTemplateEntity,
-      ProgramRegistrationAttributeEntity,
+      ProjectRegistrationAttributeEntity,
     ]),
     UserModule,
     HttpModule,
