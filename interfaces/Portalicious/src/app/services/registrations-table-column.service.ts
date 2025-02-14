@@ -8,13 +8,17 @@ import {
 import { RegistrationAttributeTypes } from '@121-service/src/registration/enum/registration-attribute.enum';
 import { RegistrationStatusEnum } from '@121-service/src/registration/enum/registration-status.enum';
 
-import { getChipDataByRegistrationStatus } from '~/components/colored-chip/colored-chip.helper';
+import {
+  getChipDataByDuplicateStatus,
+  getChipDataByRegistrationStatus,
+} from '~/components/colored-chip/colored-chip.helper';
 import {
   QueryTableColumn,
   QueryTableColumnType,
 } from '~/components/query-table/query-table.component';
 import { ProjectApiService } from '~/domains/project/project.api.service';
 import {
+  DUPLICATE_STATUS_LABELS,
   REGISTRATION_STATUS_LABELS,
   registrationLink,
 } from '~/domains/registration/registration.helper';
@@ -24,18 +28,21 @@ import {
   RegistrationAttributeService,
 } from '~/services/registration-attribute.service';
 import { TranslatableStringService } from '~/services/translatable-string.service';
+import { DuplicateStatus } from '@121-service/src/registration/enum/duplicate-status.enumt';
 
 export const FILTERABLE_ATTRIBUTES_LABELS: Record<string, string> = {
   paymentCount: $localize`:@@payment-count:Number of payments`,
   paymentCountRemaining: $localize`:@@payment-count-remaining:Remaining payments`,
   maxPayments: $localize`:@@max-payments:Max payments`,
   lastMessageStatus: $localize`:@@last-message-status:Last message status`,
+  duplicateStatus: $localize`:@@duplicate-status:Duplicates`,
 };
 
 export const DEFAULT_VISIBLE_FIELDS_SORTED: string[] = [
   'registrationProgramId',
   'name',
   'status',
+  'duplicateStatus',
   'phoneNumber',
   'paymentCount',
   'maxPayments',
@@ -112,6 +119,17 @@ export class RegistrationsTableColumnService {
                 })),
               getCellChipData: (registration) =>
                 getChipDataByRegistrationStatus(registration.status),
+            },
+            {
+              field: 'duplicateStatus',
+              header: $localize`:@@registration-status:Duplicates`,
+              type: QueryTableColumnType.MULTISELECT,
+              options: Object.values(DuplicateStatus).map((status) => ({
+                label: DUPLICATE_STATUS_LABELS[status],
+                value: status,
+              })),
+              getCellChipData: (registration) =>
+                getChipDataByDuplicateStatus(registration.duplicateStatus),
             },
             {
               field: 'programFinancialServiceProviderConfigurationName',
