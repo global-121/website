@@ -108,6 +108,10 @@ class BasePage {
     const fileChooser = await fileChooserPromise;
     await fileChooser.setFiles(filePath);
   }
+
+  async reloadPage() {
+    await this.page.reload();
+  }
 }
 
 export default BasePage;
